@@ -10,8 +10,9 @@ import Updates from './pages/Updates.jsx'
 import Faq from './pages/Faq.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
+import Guide from './pages/Guide.jsx'
 
-const routes = {'/':Home,'/features':Features,'/tutorials':Tutorials,'/network':Network,'/mikrotik':Mikrotik,'/updates':Updates,'/faq':Faq,'/contact':Contact}
+const routes = {'/':Home,'/features':Features,'/tutorials':Tutorials,'/network':Network,'/mikrotik':Mikrotik,'/updates':Updates,'/faq':Faq,'/contact':Contact,'/guide':Guide}
 
 export default function App(){
   const [path,setPath]=useState(window.location.pathname)
