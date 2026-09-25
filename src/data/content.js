@@ -1,56 +1,10 @@
-export const stats = [
-  { value: '100+', label: 'أداة وواجهة تشغيلية' },
-  { value: '35+', label: 'شرح فيديو' },
-  { value: '24/7', label: 'مساعد فني ذاتي في جوالك' },
-  { value: 'RTL', label: 'واجهة عربية' }
-]
-
-export const features = [
-  { icon: '/app-assets/ic_page_setup.webp', title: 'إدارة صفحة HotSpot', text: 'تعديل وتطوير صفحة تسجيل الدخول من داخل التطبيق مع أدوات تصميم مرنة.' },
-  { icon: '/app-assets/ic_accesspoint.webp', title: 'إدارة أجهزة الشبكة', text: 'توثيق Access Points والانتينات والأجهزة وعناوين IP وVLAN والمواقع.' },
-  { icon: '/app-assets/ic_mikrotik_tools.webp', title: 'أدوات MikroTik', text: 'تنفيذ أدوات الإدارة والحماية والإعداد من الهاتف عبر اتصال مباشر بالراوتر.' },
-  { icon: '/app-assets/ic_speed.webp', title: 'خمس طرق لتحديد السرعة', text: 'منظومة مرنة لتحديد السرعة بدومين أو بدون دومين عبر خمس طرق مختلفة، مع دعم Simple Queue وPCQ وQueue Tree وHotSpot.' },
-  { icon: '/app-assets/ic_security.webp', title: 'حماية الشبكة', text: 'أدوات عملية لإدارة حماية HotSpot وDNS وبعض وسائل تجاوز صفحة الدخول.' },
-  { icon: '/app-assets/ic_backup.webp', title: 'نسخ احتياطي', text: 'حفظ واستعادة بيانات التطبيق من ذاكرة الهاتف مع دعم Google Drive.' }
-]
-
-export const deviceFields = ['رقم الجهاز','نوع الجهاز','عنوان IP','رقم VLAN','اسم المستخدم','المنطقة','مكان الجهاز في الشبكة','ملاحظات']
-
-export const faqs = [
-  ['هل تطبيق OnStar يستهلك معالج MikroTik؟','واجهة التطبيق، إدارة القوالب والملفات، البحث، النسخ الاحتياطي ومعظم منطق المعالجة يعمل على الهاتف. OnStar لا يثبت برنامجًا يعمل باستمرار داخل RouterOS. عند استخدام أداة تخص MikroTik يرسل التطبيق إعدادات أو أوامر عبر الاتصال بالراوتر، وأي Queue أو Firewall أو Mangle تقوم بإضافته يعمل داخل RouterOS كأي إعداد عادي، لذلك أثره يعتمد على القاعدة نفسها وحجم الشبكة وليس على تشغيل التطبيق.'],
-  ['هل أحتاج إلى لابتوب بعد تركيب الصفحة؟','صُمم OnStar ليغطي رحلة العمل من تركيب الصفحة وضبطها إلى التعديلات اليومية من الهاتف. بعد الإعداد، يمكنك تعديل الصفحة والسرعات والأخبار والنسخ الاحتياطي واستخدام أدوات MikroTik وفحص الأجهزة دون الرجوع إلى اللابتوب في كل خطوة.'],
-  ['هل يمكن تحويل الصفحة من تحديد سرعة إلى بدون تحديد سرعة؟','نعم. من إعدادات OnStar يمكنك التبديل بين صفحة تستخدم اختيار السرعة وصفحة بدون تحديد سرعة، ثم العودة للوضع الآخر لاحقًا عند الحاجة بدون إعادة بناء المشروع من البداية.'],
-  ['كم طريقة يوفر OnStar لتحديد السرعة؟','يوفر OnStar خمس طرق لتحديد السرعة، تشمل أساليب تعمل بدومين وأخرى بدون دومين، مع خيارات تعتمد على Simple Queue وPCQ وQueue Tree وHotSpot بحسب طريقة إعداد الشبكة.'],
-  ['هل خدمات الفريق جزء من التطبيق؟','لا. خدمات تركيب الصفحات، الدخول عن بُعد إلى MikroTik، دمج خطوط الإنترنت وبرمجة MikroTik هي خدمات يقدمها الفريق البرمجي بشكل منفصل عن مميزات تطبيق OnStar.'],
-  ['هل أحتاج خبرة مسبقة في MikroTik؟','التطبيق يقلل الحاجة إلى الأوامر اليدوية ويجمع الأدوات في واجهات واضحة مع شروحات، لكن بعض الأدوات المتقدمة تظل إعدادات شبكات حقيقية ويُنصح بفهم تأثيرها قبل تطبيقها.'],
-  ['ما المقصود بأن OnStar دعم فني 24/7؟','المقصود مساعد فني ذاتي دائم في جوالك: الأدوات، الإرشادات، الشروحات وخيارات الإدارة تبقى معك في أي وقت. هذا الوصف لا يعني وجود موظف دعم بشري مباشر على مدار الساعة.'],
-  ['هل يدعم إدارة أجهزة الشبكة؟','نعم، يمكن تسجيل بيانات الأجهزة وتصنيفها وحفظ IP وVLAN والمنطقة والموقع وإجراء فحص Ping.'],
-  ['هل يمكن فحص Range كامل؟','نعم، يوفّر التطبيق أدوات لفحص نطاق IP والبحث عن الأجهزة المتصلة ضمن الشبكة.'],
-  ['هل يدعم النسخ الاحتياطي؟','نعم، يمكن حفظ نسخة احتياطية إلى ذاكرة الهاتف، مع دعم النسخ الاحتياطي إلى Google Drive ضمن تطبيق إدارة الأجهزة.'],
-  ['هل توجد شروحات لاستخدام التطبيق؟','نعم، يحتوي الموقع على دليل أدوات قابل للبحث ومكتبة فيديوهات مرتبة حسب الأقسام.']
-]
-
-export const updates = [
-  { version: 'OnStar v3', date: 'الإصدار الحالي', items: ['واجهة إدارة حديثة','أدوات صفحة HotSpot','إدارة أجهزة الشبكة','Ping وRange Scanner','نسخ احتياطي','دليل أدوات متكامل'] },
-  { version: 'دليل OnStar', date: 'مستمر', items: ['شرح الأدوات حسب الوظيفة','بحث سريع','ربط شروحات YouTube','إضافة شروحات جديدة باستمرار'] }
-]
-
-export const whatsapp = {
-  group: 'https://chat.whatsapp.com/LP5GQrRpxb61M45tXudw0K?s=cl&p=a&mlu=4&ilr=4',
-  developer: 'https://wa.me/qr/E7QRTMLKXEGXB1'
-}
-
-export const teamServices = [
-  { icon: 'layout', title: 'تركيب صفحات الدخول + برنامج الإدارة', text: 'تجهيز صفحة HotSpot وربطها ببرنامج OnStar للإدارة، مع ضبط الإعدادات الأساسية لتكون جاهزة للاستخدام من الهاتف.' },
-  { icon: 'router', title: 'الدخول عن بُعد إلى MikroTik', text: 'تجهيز وصول آمن للراوتر عن بُعد حسب الحاجة عبر WinBox وAPI وSSH وFTP وWeb، لتسهيل الإدارة والصيانة.' },
-  { icon: 'network', title: 'دمج خطوط الإنترنت', text: 'تصميم وضبط حلول دمج وتوزيع أكثر من خط إنترنت بما يناسب بنية الشبكة وأهداف الاستقرار والاستفادة من السعات.' },
-  { icon: 'shield', title: 'برمجة MikroTik', text: 'إعداد وبرمجة MikroTik للشبكات الجديدة أو إعادة تنظيم الإعدادات الحالية بحسب تصميم الشبكة ومتطلبات التشغيل.' }
-]
-
-export const speedMethods = [
-  { title: 'التحديد عبر Domain', text: 'طريقة تعتمد على إعداد Domain وربطه بمنظومة السرعات داخل الصفحة والراوتر.' },
-  { title: 'Simple Queue + PCQ', text: 'تطبيق السرعات باستخدام Simple Queue مع PCQ لتوزيع السرعة حسب الإعداد المختار.' },
-  { title: 'Queue Tree + PCQ', text: 'إدارة السرعات عبر Queue Tree مع PCQ للبنى التي تعتمد الطوابير المركزية.' },
-  { title: 'HotSpot بدون Domain', text: 'تحديد السرعة بالاعتماد على مستخدمي HotSpot مباشرة بدون الحاجة إلى Domain.' },
-  { title: 'HotSpot + Queue Tree', text: 'ربط هوية مستخدم HotSpot بنظام Queue Tree لتطبيق السرعات بطريقة مختلفة عن التحديد بالدومين.' }
-]
+import data from '../../studio-data/site_content.json'
+export const stats=data.content.stats
+export const features=data.content.features
+export const deviceFields=data.content.deviceFields
+export const faqs=data.content.faqs
+export const updates=data.content.updates
+export const whatsapp=data.whatsapp
+export const teamServices=data.content.teamServices
+export const speedMethods=data.content.speedMethods
+export const studio=data
