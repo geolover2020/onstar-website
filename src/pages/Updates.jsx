@@ -1,0 +1,3 @@
+import React from 'react'
+import { updates } from '../data/content.js'
+export default function Updates(){return <><section className="page-hero"><div className="container"><span className="eyebrow">Release Notes</span><h1>تحديثات OnStar</h1><p>مساحة مخصصة للإضافات والتحسينات والشروحات الجديدة.</p></div></section><section className="section"><div className="container timeline">{updates.map((u,i)=><article key={u.version}><div className="timeline-dot"/><div className="timeline-card"><span>{u.date}</span><h2>{u.version}</h2><ul>{u.items.map(x=><li key={x}>✓ {x}</li>)}</ul></div></article>)}</div></section></>}

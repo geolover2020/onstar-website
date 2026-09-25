@@ -1,0 +1,3 @@
+import React, { useState } from 'react'
+import { faqs } from '../data/content.js'
+export default function Faq(){const [open,setOpen]=useState(0);return <><section className="page-hero"><div className="container"><span className="eyebrow">FAQ</span><h1>الأسئلة الشائعة</h1><p>إجابات مختصرة على أهم الأسئلة المتعلقة بالموقع والتطبيق.</p></div></section><section className="section"><div className="container faq-list">{faqs.map((f,i)=><article className={open===i?'open':''} key={f[0]}><button onClick={()=>setOpen(open===i?-1:i)}><span>{f[0]}</span><b>{open===i?'−':'+'}</b></button><div><p>{f[1]}</p></div></article>)}</div></section></>}
