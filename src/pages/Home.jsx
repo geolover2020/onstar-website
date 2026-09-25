@@ -2,7 +2,8 @@ import React from 'react'
 import AppMockup from '../components/AppMockup.jsx'
 import SectionTitle from '../components/SectionTitle.jsx'
 import TutorialCard from '../components/TutorialCard.jsx'
-import { features, stats, whatsapp } from '../data/content.js'
+import { features, stats, whatsapp, teamServices, speedMethods } from '../data/content.js'
+import Icon from '../components/Icon.jsx'
 import { tutorials, tutorialCategories } from '../data/tutorials.js'
 
 export default function Home({ navigate }) {
@@ -14,7 +15,7 @@ export default function Home({ navigate }) {
         <div className="hero-copy">
           <span className="eyebrow"><span className="dot"/> OnStar • الإصدار الثالث</span>
           <h1>دعم شبكتك الفني<br/><span>داخل جوالك.</span></h1>
-          <p>بعد تركيب الصفحة وضبط الاتصال الأولي، يجمع OnStar أدوات إدارة HotSpot وMikroTik وأجهزة الشبكة في تطبيق واحد، لتنجز أعمالك اليومية من الهاتف دون الرجوع إلى اللابتوب في كل مرة.</p>
+          <p>من تركيب صفحة HotSpot وإعدادها لأول مرة إلى التعديلات اليومية والسرعات والحماية والمتابعة، يجمع OnStar الأدوات في الهاتف لتعمل بدون الحاجة إلى اللابتوب في كل خطوة.</p>
           <div className="hero-buttons"><button className="btn btn-primary" onClick={()=>navigate('/guide')}>استكشف دليل الأدوات</button><button className="btn btn-ghost" onClick={()=>navigate('/tutorials')}>دليل الفيديوهات <span>←</span></button></div>
           <div className="hero-trust"><span>✓ المعالجة الأساسية على الهاتف</span><span>✓ لا توجد خدمة دائمة داخل RouterOS</span><span>✓ شروحات لكل أداة</span></div>
         </div>
@@ -25,6 +26,20 @@ export default function Home({ navigate }) {
     <section className="brand-strip"><div className="container strip-items">{['HotSpot','Network Manager','Ping Scanner','MikroTik Tools','Backup','User Manager'].map(x=><span key={x}>{x}</span>)}</div></section>
 
     <section className="section"><div className="container"><SectionTitle eyebrow="منصة واحدة" title="كل أدواتك الأساسية في مكان واحد" text="صمّم الصفحة، راقب الشبكة، افحص الأجهزة، ونظّم أعمالك اليومية من واجهة موحدة." center/><div className="feature-grid">{features.map((f,i)=><article className="feature-card" key={f.title}><div className="icon-box app-icon"><img src={f.icon} alt=""/></div><h3>{f.title}</h3><p>{f.text}</p><span className="feature-no">0{i+1}</span></article>)}</div></div></section>
+
+    <section className="section speed-showcase"><div className="container">
+      <SectionTitle eyebrow="ميزة بارزة في OnStar" title="خمس طرق لتحديد السرعة — بدومين أو بدون دومين" text="بدل إجبارك على طريقة واحدة، يتيح OnStar اختيار أسلوب تحديد السرعة المناسب لبنية شبكتك، ثم إدارة الإعداد من الهاتف." center/>
+      <div className="speed-methods-grid">{speedMethods.map((m,i)=><article key={m.title}><span>0{i+1}</span><h3>{m.title}</h3><p>{m.text}</p></article>)}</div>
+      <div className="speed-switch-panel">
+        <div><span className="eyebrow">مرونة الصفحة</span><h3>حوّل الصفحة من تحديد سرعة إلى بدون تحديد سرعة — والعكس</h3><p>في أي وقت، ومن داخل إعدادات التطبيق، تستطيع تغيير نمط الصفحة بين وجود اختيار السرعة وعدم وجوده ثم العودة للوضع الآخر عند الحاجة.</p></div>
+        <div className="switch-visual"><b>بدون تحديد سرعة</b><span className="switch-track"><i/></span><b>تحديد السرعة مفعّل</b></div>
+      </div>
+    </div></section>
+
+    <section className="section team-services-preview"><div className="container">
+      <div className="section-split-head"><SectionTitle eyebrow="خدمات الفريق البرمجي" title="خدمات فنية مستقلة عن التطبيق" text="إلى جانب OnStar، يقدم الفريق خدمات تنفيذ وبرمجة للشبكات. هذه الخدمات ليست من مميزات التطبيق وتُطلب بشكل منفصل."/><button className="btn btn-ghost" onClick={()=>navigate('/services')}>عرض جميع الخدمات</button></div>
+      <div className="services-grid preview">{teamServices.map((s,i)=><article className="service-card" key={s.title}><div className="service-icon"><Icon name={s.icon} size={28}/></div><span className="service-index">0{i+1}</span><h3>{s.title}</h3><p>{s.text}</p></article>)}</div>
+    </div></section>
 
     <section className="section performance-section"><div className="container">
       <SectionTitle eyebrow="الأداء والاعتمادية" title="OnStar لا يحوّل MikroTik إلى جهاز يشغّل التطبيق" text="تم تصميم التطبيق بحيث تبقى واجهته ومعالجة بياناته وملفاته على الهاتف، بينما يتعامل مع MikroTik فقط عند الحاجة لتنفيذ إعداد تختاره أنت." center/>
@@ -38,7 +53,7 @@ export default function Home({ navigate }) {
 
     <section className="section pocket-support"><div className="container split-layout">
       <div className="support-phone-card"><img src="/app-assets/ic_onstar.png" alt="OnStar"/><div><span>OnStar v3</span><strong>مساعد شبكتك في جيبك 24/7</strong><small>أدوات + إرشادات + شروحات + إدارة من الهاتف</small></div></div>
-      <div><SectionTitle eyebrow="الهدف من OnStar" title="أقل اعتمادًا على اللابتوب، وأكثر قدرة على حل المشكلة من مكانك" text="بعد تركيب الصفحة وتجهيز الاتصال، الهدف أن يكون صاحب الشبكة قادرًا على إجراء التعديلات اليومية والفحص والصيانة من هاتفه مباشرة، حتى لو لم يكن معتادًا على كتابة أوامر MikroTik يدويًا."/>
+      <div><SectionTitle eyebrow="الهدف من OnStar" title="أقل اعتمادًا على اللابتوب، وأكثر قدرة على حل المشكلة من مكانك" text="من تركيب الصفحة وإعدادها إلى التعديلات اليومية والفحص والصيانة، الهدف أن يكون صاحب الشبكة قادرًا على إنجاز العمل من هاتفه مباشرة، مع أدوات عربية واضحة وشروحات تقلل الحاجة إلى خبرة مسبقة أو أوامر MikroTik اليدوية."/>
       <div className="check-grid">{['تعديل الصفحة من الهاتف','فحص أجهزة الشبكة','نسخ واستعادة الإعدادات','أدوات MikroTik بواجهات واضحة','دليل لكل أداة','فيديوهات شرح مرتبطة'].map(x=><span key={x}>✓ {x}</span>)}</div>
       <p className="support-clarity">مصطلح «24/7» هنا يعني أن أدوات المساعدة الذاتية متاحة معك دائمًا داخل الهاتف، وليس وعدًا بوجود موظف دعم بشري مباشر طوال اليوم.</p>
       </div>

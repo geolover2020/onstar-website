@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Logo from './Logo.jsx'
 
 const links = [
-  ['/', 'الرئيسية'], ['/features','المميزات'], ['/guide','دليل الأدوات'], ['/tutorials','الشروحات'], ['/network','إدارة الشبكة'], ['/mikrotik','MikroTik'], ['/updates','التحديثات'], ['/faq','الأسئلة الشائعة'], ['/contact','تواصل معنا']
+  ['/', 'الرئيسية'], ['/features','المميزات'], ['/services','خدمات الفريق'], ['/guide','دليل الأدوات'], ['/tutorials','الشروحات'], ['/network','إدارة الشبكة'], ['/mikrotik','MikroTik'], ['/updates','التحديثات'], ['/faq','الأسئلة الشائعة'], ['/contact','تواصل معنا']
 ]
 
 export default function Header({ path, navigate }) {
