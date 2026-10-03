@@ -16,6 +16,8 @@ import RemoteAccess from './pages/RemoteAccess.jsx'
 import CustomerRegister from './pages/CustomerRegister.jsx'
 import CustomerLogin from './pages/CustomerLogin.jsx'
 import CustomerAccount from './pages/CustomerAccount.jsx'
+import CustomerVerifyEmail from './pages/CustomerVerifyEmail.jsx'
+import CustomerPasswordReset from './pages/CustomerPasswordReset.jsx'
 
 const routes = {
   '/':Home,
@@ -32,6 +34,8 @@ const routes = {
   '/register':CustomerRegister,
   '/customer-login':CustomerLogin,
   '/account':CustomerAccount,
+  '/verify-email':CustomerVerifyEmail,
+  '/forgot-password':CustomerPasswordReset,
 }
 
 export default function App(){
