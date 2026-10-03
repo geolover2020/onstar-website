@@ -12,8 +12,27 @@ import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Guide from './pages/Guide.jsx'
 import Services from './pages/Services.jsx'
+import RemoteAccess from './pages/RemoteAccess.jsx'
+import CustomerRegister from './pages/CustomerRegister.jsx'
+import CustomerLogin from './pages/CustomerLogin.jsx'
+import CustomerAccount from './pages/CustomerAccount.jsx'
 
-const routes = {'/':Home,'/features':Features,'/tutorials':Tutorials,'/network':Network,'/mikrotik':Mikrotik,'/updates':Updates,'/faq':Faq,'/contact':Contact,'/guide':Guide,'/services':Services}
+const routes = {
+  '/':Home,
+  '/features':Features,
+  '/tutorials':Tutorials,
+  '/network':Network,
+  '/mikrotik':Mikrotik,
+  '/updates':Updates,
+  '/faq':Faq,
+  '/contact':Contact,
+  '/guide':Guide,
+  '/services':Services,
+  '/remote-access':RemoteAccess,
+  '/register':CustomerRegister,
+  '/customer-login':CustomerLogin,
+  '/account':CustomerAccount,
+}
 
 export default function App(){
   const [path,setPath]=useState(window.location.pathname)
