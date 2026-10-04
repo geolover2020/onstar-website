@@ -30,6 +30,7 @@ export default function CustomerAccount({navigate,refreshAuth}){
  const canTrial=!!trial.can_request
  const endpoints=router.access_endpoints||[]
  const devicePortal=router.device_portal||null
+ const devicePortalUrl=devicePortal?`${devicePortal.url}${devicePortal.url.includes('?')?'&':'?'}username=${encodeURIComponent(devicePortal.username||'')}`:''
  return <section className="account-page"><div className="container">
   <div className="account-head"><div><span className="eyebrow">بوابة المشترك</span><h1>{c.network_name||c.full_name}</h1><p>{c.email}</p></div><div className="actions"><button className="btn btn-ghost" onClick={load}>تحديث</button><button className="btn btn-ghost" onClick={logout}>تسجيل الخروج</button></div></div>
   {msg&&<div className="notice-box good">{msg}</div>}{error&&<div className="form-error account-error">{error}</div>}
@@ -44,8 +45,8 @@ export default function CustomerAccount({navigate,refreshAuth}){
   </div>}
 
   {devicePortal&&<div className="account-panel portal-access-card">
-    <div><span className="eyebrow">لوحة إدارة الأجهزة</span><h2>لوحة العميل الخاصة بشبكتك</h2><p>استخدم هذه اللوحة لإدارة الأجهزة الداخلية والوصول إليها حسب الصلاحيات التي منحتها الإدارة.</p></div>
-    <div className="portal-access-details"><span>اسم المستخدم <b className="mono" dir="ltr">{devicePortal.username}</b></span><span>الأجهزة المسموحة <b>{devicePortal.max_devices}</b></span><a className="btn btn-primary" href={devicePortal.url} target="_blank" rel="noreferrer">فتح لوحة الأجهزة</a></div>
+    <div><span className="eyebrow">لوحة إدارة الأجهزة</span><h2>لوحة العميل الخاصة بشبكتك</h2><p>افتح اللوحة وسيتم تجهيز اسم المستخدم تلقائيًا. بعد تفعيل Passkey مرة واحدة يمكنك الدخول لاحقًا بالبصمة أو Face ID أو Windows Hello/PIN بدون كتابة كلمة المرور.</p></div>
+    <div className="portal-access-details"><span>اسم المستخدم <b className="mono" dir="ltr">{devicePortal.username}</b></span><span>الأجهزة المسموحة <b>{devicePortal.max_devices}</b></span><a className="btn btn-primary" href={devicePortalUrl} target="_blank" rel="noreferrer">فتح لوحة الأجهزة</a></div>
   </div>}
 
   {c.email_verified&&<div className="account-grid">
