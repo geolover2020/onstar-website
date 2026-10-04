@@ -5,9 +5,10 @@ const links = [
   ['/', 'الرئيسية'], ['/features','المميزات'], ['/services','خدمات الفريق'], ['/remote-access','الدخول عن بُعد'], ['/guide','دليل الأدوات'], ['/tutorials','الشروحات'], ['/network','إدارة الشبكة'], ['/mikrotik','MikroTik'], ['/updates','التحديثات'], ['/faq','الأسئلة الشائعة'], ['/contact','تواصل معنا']
 ]
 
-export default function Header({ path, navigate }) {
+export default function Header({ path, navigate, auth }) {
   const [open, setOpen] = useState(false)
   useEffect(() => setOpen(false), [path])
+  const logged=!!auth?.authenticated
   return <header className="site-header">
     <div className="container nav-wrap">
       <Logo />
@@ -15,7 +16,9 @@ export default function Header({ path, navigate }) {
         {links.map(([href,label]) => <a key={href} href={href} className={path === href ? 'active' : ''} onClick={(e)=>{e.preventDefault();navigate(href)}}>{label}</a>)}
       </nav>
       <div className="nav-actions">
-        <a className="btn btn-small btn-primary desktop-only" href="/customer-login" onClick={(e)=>{e.preventDefault();navigate('/customer-login')}}>دخول المشترك</a>
+        <a className={`account-nav-link ${logged?'logged':''}`} href={logged?'/account':'/customer-login'} onClick={(e)=>{e.preventDefault();navigate(logged?'/account':'/customer-login')}}>
+          <span className="account-nav-dot"/>{logged?'حسابي':'دخول'}
+        </a>
         <button className="menu-btn" aria-label="القائمة" onClick={()=>setOpen(v=>!v)}><span/><span/><span/></button>
       </div>
     </div>

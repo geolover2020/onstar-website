@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
+import React,{useEffect,useState} from 'react'
 import {postJson} from '../lib/customerApi.js'
 
-export default function CustomerRegister({navigate}){
+export default function CustomerRegister({navigate,auth}){
+  useEffect(()=>{if(auth?.authenticated) navigate('/account')},[auth?.authenticated])
   const [form,setForm]=useState({full_name:'',network_name:'',email:'',phone:'',routeros_version:'7',password:'',password_confirm:''})
   const [loading,setLoading]=useState(false),[error,setError]=useState('')
   const set=(k,v)=>setForm(x=>({...x,[k]:v}))

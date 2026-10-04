@@ -7,27 +7,30 @@ const benefits = [
   ['تجربة مجانية بموافقة الإدارة', 'يمكن طلب تجربة مجانية افتراضيًا لمدة 5 أيام، ولا تبدأ إلا بعد موافقة الإدارة.'],
   ['حماية من تكرار التجربة', 'الأهلية مرتبطة ببريد إلكتروني مؤكد وSerial Number الحقيقي لـ MikroTik الذي يقرأه السيرفر.'],
   ['تفعيل مالي يدوي', 'تسجيل الحساب والطلب يتمان من الموقع، لكن تفعيل الخدمة المدفوعة لا يتم إلا بعد تأكيد الإدارة لعملية الدفع.'],
-  ['إيقاف مرن عند التأخير', 'يمكن تحديد مهلة قبل الإيقاف، تمديدها، أو إبقاء الخدمة آجل مع استمرار تسجيل الدين محاسبيًا.'],
+  ['إشعارات بريدية تلقائية', 'القبول والرفض والفواتير والدفع والتنبيهات المهمة تصل تلقائيًا إلى بريد المشترك.'],
 ]
 
-export default function RemoteAccess({ navigate }) {
+export default function RemoteAccess({ navigate, auth }) {
+  const logged=!!auth?.authenticated
   return <>
     <section className="page-hero remote-access-hero">
       <div className="container remote-hero-grid">
         <div>
           <span className="eyebrow">OnStar Remote Access</span>
           <h1>دخول آمن لأجهزة شبكتك<br/>مع اشتراك ومحاسبة واضحة</h1>
-          <p>سجّل طلبك من الموقع، اربط MikroTik، واطلب تجربة مجانية أو أرسل تأكيد الدفع. التفعيل النهائي يبقى بيد الإدارة داخل سيرفر OnStar.</p>
+          <p>سجّل طلبك من الموقع، اربط MikroTik، واطلب تجربة مجانية أو أرسل تأكيد الدفع. بعد التفعيل تظهر لك عناوين Winbox وSSH وFTP وAPI وWebFig جاهزة للنسخ.</p>
           <div className="hero-buttons">
-            <button className="btn btn-primary" onClick={()=>navigate('/register')}>إنشاء حساب مشترك</button>
-            <button className="btn btn-ghost" onClick={()=>navigate('/customer-login')}>دخول المشترك</button>
+            {logged ? <button className="btn btn-primary" onClick={()=>navigate('/account')}>فتح حسابي</button> : <>
+              <button className="btn btn-primary" onClick={()=>navigate('/register')}>إنشاء حساب مشترك</button>
+              <button className="btn btn-ghost" onClick={()=>navigate('/customer-login')}>دخول</button>
+            </>}
           </div>
         </div>
         <div className="remote-flow-card">
-          <div className="remote-flow-step"><span>01</span><b>تسجيل الطلب</b><small>إنشاء حساب المشترك بدون تفعيل الخدمة.</small></div>
-          <div className="remote-flow-step"><span>02</span><b>ربط MikroTik</b><small>السيرفر يقرأ Serial Number الحقيقي بعد الربط.</small></div>
-          <div className="remote-flow-step"><span>03</span><b>تجربة أو دفع</b><small>طلب تجربة مجانية أو إرسال رقم عملية الكريمي.</small></div>
-          <div className="remote-flow-step"><span>04</span><b>موافقة الإدارة</b><small>التفعيل المالي والخدمة يتمان من لوحة السيرفر فقط.</small></div>
+          <div className="remote-flow-step"><span>01</span><b>تسجيل الحساب</b><small>تأكيد البريد وإنشاء الحساب بدون تفعيل الخدمة.</small></div>
+          <div className="remote-flow-step"><span>02</span><b>ربط MikroTik</b><small>السيرفر يقرأ Serial Number الحقيقي من الراوتر.</small></div>
+          <div className="remote-flow-step"><span>03</span><b>تجربة أو دفع</b><small>طلب تجربة مجانية أو إرسال إثبات الدفع من الحساب.</small></div>
+          <div className="remote-flow-step"><span>04</span><b>التفعيل والوصول</b><small>بعد موافقة الإدارة تظهر عناوين الوصول والمنافذ داخل الحساب.</small></div>
         </div>
       </div>
     </section>
