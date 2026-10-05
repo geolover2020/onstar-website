@@ -1,0 +1,15 @@
+OnStar Website Final Premium validation
+Date: 2026-10-05
+
+PASS: TypeScript transpile parser accepted all 32 JS/JSX files with zero syntax errors.
+PASS: All relative JS/JSX imports resolve to existing local files.
+PASS: CSS opening/closing brace count matches (735/735).
+PASS: Customer connection-port API calls preserved.
+PASS: OnStar Cloud account UI preserved.
+PASS: Passkey customer guidance preserved.
+PASS: Cloudflare HTML error sanitization preserved in customerApi.js.
+PASS: Responsive desktop/mobile dropdown navigation implemented.
+PASS: Collapsible detailed step guides implemented for Remote Access, customer workflow, and tool guide.
+
+Build note:
+The execution environment could not complete npm ci inside the tool timeout. node_modules/dist are intentionally not shipped. Netlify or any normal Node build environment can run npm ci && npm run build from the included source.

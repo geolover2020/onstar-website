@@ -1,10 +1,28 @@
 const API_BASE = (import.meta.env.VITE_ONSTAR_CUSTOMER_API_BASE || '/api/customer').replace(/\/$/, '')
 
+function friendlyHttpError(status, text, contentType = '') {
+  const raw = String(text || '')
+  const html = String(contentType || '').includes('text/html') || /^\s*<!doctype html/i.test(raw) || /<html[\s>]/i.test(raw)
+  if (!html) return raw.trim() || 'تعذر تنفيذ الطلب'
+  if (status === 502) return 'الخدمة السحابية لم تستجب مؤقتًا (502). أعد المحاولة بعد قليل.'
+  if (status === 503) return 'الخدمة قيد التشغيل أو الصيانة مؤقتًا (503). أعد المحاولة بعد قليل.'
+  if (status === 504) return 'انتهت مهلة اتصال الخدمة (504). أعد المحاولة بعد قليل.'
+  if (status === 404) return 'مسار الخدمة غير متاح حاليًا (404).'
+  return `تعذر الاتصال بالخدمة (HTTP ${status}).`
+}
+
 async function parseResponse(res) {
   const type = res.headers.get('content-type') || ''
-  const data = type.includes('application/json') ? await res.json() : await res.text()
+  let data
+  if (type.includes('application/json')) {
+    try { data = await res.json() } catch { data = {} }
+  } else {
+    const text = await res.text()
+    data = res.ok ? text : friendlyHttpError(res.status, text, type)
+  }
   if (!res.ok) {
-    const message = typeof data === 'object' && data ? (data.detail || data.message || 'تعذر تنفيذ الطلب') : (data || 'تعذر تنفيذ الطلب')
+    let message = typeof data === 'object' && data ? (data.detail || data.message || 'تعذر تنفيذ الطلب') : (data || 'تعذر تنفيذ الطلب')
+    if (typeof message === 'string' && (/<!doctype html/i.test(message) || /<html[\s>]/i.test(message))) message = friendlyHttpError(res.status, message, type)
     const err = new Error(message)
     err.status = res.status
     err.data = data
