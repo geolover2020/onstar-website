@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://webs.onstareh.com/sitemap.xml

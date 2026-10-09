@@ -1,0 +1,18 @@
+{
+  "name": "OnStar | إدارة الشبكات وOnStar Cloud",
+  "short_name": "OnStar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#151b19",
+  "theme_color": "#151b19",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/app-assets/ic_onstar.png",
+      "sizes": "960x960",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

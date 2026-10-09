@@ -1,0 +1,23 @@
+# Same customer API contract as netlify.toml
+/api/customer/* https://vpn.onstareh.com/v2/customer-api/:splat 200!
+
+/app /index.html 200
+/remote-access /index.html 200
+/onstar-cloud /index.html 200
+/knowledge /index.html 200
+/guide /index.html 200
+/tutorials /index.html 200
+/features /index.html 200
+/network /index.html 200
+/mikrotik /index.html 200
+/updates /index.html 200
+/faq /index.html 200
+/services /index.html 200
+/contact /index.html 200
+/register /index.html 200
+/customer-login /index.html 200
+/verify-email /index.html 200
+/forgot-password /index.html 200
+/account /index.html 200
+
+/* /404.html 404
