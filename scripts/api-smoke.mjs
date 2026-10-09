@@ -1,0 +1,16 @@
+import {api,get,post} from '../src/api.js';
+let sent;
+globalThis.fetch=async(url,init)=>{sent={url,init};return new Response(JSON.stringify({ok:true}),{status:200,headers:{'content-type':'application/json'}})};
+await post('/login',{email:'test@example.invalid',password:'not-real'});
+if(sent.url!=='/api/customer/login'||sent.init.credentials!=='include'||sent.init.method!=='POST'||JSON.parse(sent.init.body).email!=='test@example.invalid')throw new Error('login request contract failure');
+console.log('PASS: POST login, JSON, credentials include');
+const fd=new FormData();fd.set('depositor_name','Test Only');await api('/payment-confirmations',{method:'POST',body:fd});
+if(!(sent.init.body instanceof FormData)||sent.init.headers.has('Content-Type'))throw new Error('multipart incorrect');
+console.log('PASS: multipart FormData and browser boundary');
+globalThis.fetch=async()=>new Response(JSON.stringify({detail:'اختبار رفض الخادم'}),{status:403,headers:{'content-type':'application/json'}});
+let err;try{await get('/me')}catch(e){err=e};if(err?.status!==403||!err.message.includes('اختبار'))throw new Error('API error handling failure');
+console.log('PASS: server error and 403 propagated');
+globalThis.fetch=async()=>new Response('<html>Bad Gateway</html>',{status:502,headers:{'content-type':'text/html'}});
+err=null;try{await get('/me')}catch(e){err=e};if(err?.status!==502||err.message.includes('<html>'))throw new Error('502 HTML leakage');
+console.log('PASS: 502 HTML converted to safe Arabic');
+console.log('API MOCK SMOKE PASS; no actual production requests made.');

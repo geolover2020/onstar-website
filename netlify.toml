@@ -2,8 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-# Customer portal only. The backend endpoint will be added to the OnStar server
-# before this website revision is published to production.
 [[redirects]]
   from = "/api/customer/*"
   to = "https://vpn.onstareh.com/v2/customer-api/:splat"
@@ -14,3 +12,16 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
